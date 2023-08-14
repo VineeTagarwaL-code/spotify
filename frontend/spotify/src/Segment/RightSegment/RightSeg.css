@@ -1,0 +1,70 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+#RighSegCont{
+ 
+    height: 92%;
+   background-color: #101010;
+   border-radius: 20px;
+    overflow: hidden;
+    padding: 0px 20px 0px 20px;
+}
+
+#navi{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#buttonIcon{
+
+    display: flexbox;
+    
+}
+
+.iconRight{
+    background-color: #090909;
+    cursor: pointer;
+    margin:10px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.iconRight:hover{
+    color: white;
+    transform: scale(1.1);
+    transition: ease-in-out .2s;
+}
+#authCont{
+    ;
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.authBtn{
+    margin-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+    height: 50px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 15px;
+   background-color: transparent;
+   color: rgb(136, 136, 136);
+   
+
+}
+
+.color{
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 120px;
+}
+
+.authBtn:hover{
+    transform: scale(1.05);
+    transition: ease-in-out .1s;
+    
+}

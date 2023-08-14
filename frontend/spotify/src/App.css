@@ -1,3 +1,35 @@
+#MainCont {
+    height: 98vh;
+    width: 99vw;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#MainCont > div {
+    overflow-y: auto;
+}
+
+#leftSeg {
+    flex: 1; /* Use flex shorthand instead of flex-grow */
+    margin: 10px;
+    overflow-y: auto;
+}
+
+#rightSeg {
+    flex: 4; /* Use flex shorthand instead of flex-grow */
+    margin: 10px;
+    overflow-y: auto;
+}
+
 footer {
     z-index: 5;
     position: absolute;
