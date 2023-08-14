@@ -1,0 +1,6 @@
+footer {
+    z-index: 5;
+    position: absolute;
+    width: 98vw;
+    bottom: 0;
+}

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+#panelCont {
+    padding: 0px 20px 0px 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    font-size: 13px;
+    background: rgb(167, 50, 158);
+    background: linear-gradient(90deg, rgba(167, 50, 158, 1) 0%, rgba(194, 97, 187, 1) 0%, rgba(163, 86, 172, 1) 21%, rgba(81, 154, 244, 1) 100%);
+}
+
+#mainMPanel {
+    font-weight: bold;
+
+}
+
+#mainTextPanel {
+    font-weight: 500 !important
+}
+
+#PanelLeftButton {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: rgb(32, 30, 30);
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#PanelLeftButton:hover {
+    transition: ease-in-out .5s;
+    transform: scale(1.1);
+}
