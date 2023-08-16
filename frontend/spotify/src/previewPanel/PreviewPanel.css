@@ -2,6 +2,8 @@
 
 #panelCont {
     padding: 0px 20px 0px 20px;
+  
+    height: 75px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -14,12 +16,16 @@
 }
 
 #mainMPanel {
+    font-size: 15px;
     font-weight: bold;
-
+       font-family: 'Montserrat', sans-serif;
+       margin-bottom: 10px;
 }
 
 #mainTextPanel {
-    font-weight: 500 !important
+    font-size: 15px;
+    font-weight: 500 !important;
+      font-family: 'Montserrat', sans-serif;
 }
 
 #PanelLeftButton {
