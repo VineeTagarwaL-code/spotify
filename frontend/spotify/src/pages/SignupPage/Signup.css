@@ -5,16 +5,19 @@
     
 }
 .signup{
+   
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    width: 600px;
+    width: 100vw;
+   
    height: 100vh;
-   margin: 44px auto ;
+   margin: auto ;
     background-color: #000;
     border-radius: 10px;
 }
 .header{
+    align-self: center;
     letter-spacing: -0.04em;
     text-align: center;
     line-height: 16px;

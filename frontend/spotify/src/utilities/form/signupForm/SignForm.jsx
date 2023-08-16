@@ -1,22 +1,66 @@
-
+import { useEffect, useState } from "react"
 export default function SignForm() {
+    // validated inputs
+    const [validName, setValidName] = useState(true);
+    const [validPass, setValidPass] = useState(true);
+    const [validEmail, setValidEmail] = useState(true);
+    //non-validated inputs
+    const [Name, setName] = useState("");
+    const [Pass, setPass] = useState("");
+    const [Email, setEmail] = useState("");
+
+    //alredy existing
+    const [ExistName, setExistName] = useState(null);
+    const [ExistEmail, setExistEmail] = useState(null);
+
+
+
+
+
+
+
     return (
         <form className="signup-form">
-            <label htmlFor="Email">What`s your email?</label>
-            <input type="email" id="email" placeholder='Enter your email ' />
+            <span>
+                <label htmlFor="Email">What`s your email?</label>
+                <input type="email" id="email" placeholder='Enter your email ' value={Email} onChange={
+                    (e) => {
+                        setEmail(e.target.value)
+                        setValidEmail(
+                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)
+                        );
+                    }
+                } />
+                <label >
+                    {/* {!validEmail || ExistEmail && <h6>{ExistEmail}</h6>} */}
+                    {!validEmail ? <h6 style={{color:"green"}}>Enter A valid Email</h6> : ExistEmail ? <h6>{ExistEmail}</h6> : ""}
+                </label>
+            </span> 
+
+
+
+
             <label htmlFor="password">Create a password</label>
-            <input type="password" id="password" placeholder='Create a password' />
+            <input type="password" id="password" placeholder='Create a password' value={Pass} onChange={
+                (e) => {
+                  setPass(e.target.value)
+                  setValidPass(
+                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(e.target.value)
+                  );
+
+                }}
+                 />
+                 {!validPass && <h6 style={{color:"green"}}>Should have Upper , lower , special and digits with 8 char longs</h6>}
+
             <label htmlFor="name">What should we call you?</label>
-            <input type="text" id='profile' placeholder='Enter a profile name' />
-            <div className="gen">
-                <label className="gen-label" htmlFor="gender">What`s your gender?</label>
-                <div className="radio">
-                    <input type="radio" id="male" name="gender" value="male" />Male
-                    <input type="radio" id="female" name="gender" value="female" />Female
-                    <input type="radio" id="non-binary" name="gender" value="non-binary" />Non-binary
-                    <input type="radio" id="other" name="gender" value="other" />Other
-                </div>
-            </div>
+            <input type="text" id='profile' placeholder='Enter a profile name' value={Name} onChange={(e)=>{
+                setName(e.target.value)
+                setValidName(
+                    /^[A-Za-z0-9@_]{1,12}$/.test(e.target.value)
+                )
+            }} />
+            {!validName && <h6 style={{color:"green"}}>Should be only 12 char longs</h6>}
+
             <button id='signup'>Sign up</button>
         </form>
 
