@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import axios from 'axios'
 export default function SignForm() {
     // validated inputs
     const [validName, setValidName] = useState(true);
@@ -15,7 +16,23 @@ export default function SignForm() {
 
 
 
+ 
+  const handleSignup =async()=>{
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    if(validEmail && validName && validPass){
+        try{
+            console.log("hey welcome bitch")
 
+        }catch(e) {
+            console.log(e)
+        }
+    }else{
+        console.log("validation failed");
+
+    }
+
+     
+  }
 
 
 
@@ -50,7 +67,7 @@ export default function SignForm() {
 
                 }}
                  />
-                 {!validPass && <h6 style={{color:"green"}}>Should have Upper , lower , special and digits with 8 char longs</h6>}
+                 {!validPass && <h6 style={{color:"green"}}>Should have Upper , lower , special (@ , # , _ ) and digits with 8 char longs</h6>}
 
             <label htmlFor="name">What should we call you?</label>
             <input type="text" id='profile' placeholder='Enter a profile name' value={Name} onChange={(e)=>{
@@ -61,7 +78,7 @@ export default function SignForm() {
             }} />
             {!validName && <h6 style={{color:"green"}}>Should be only 12 char longs</h6>}
 
-            <button id='signup'>Sign up</button>
+            <button id='signup' onClick={()=>{handleSignup()}}>Sign up</button>
         </form>
 
     )
