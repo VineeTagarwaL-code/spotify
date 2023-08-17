@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './Signup.css'
 import SignForm from '../../utilities/form/signupForm/SignForm';
 export default function SignupPage() {
+   
+
+
     function handleLoginClick() {
         navigate("/login")
     }

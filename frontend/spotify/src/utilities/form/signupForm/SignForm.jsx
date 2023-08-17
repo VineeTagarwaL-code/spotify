@@ -6,22 +6,34 @@ export default function SignForm() {
     const [validPass, setValidPass] = useState(true);
     const [validEmail, setValidEmail] = useState(true);
     //non-validated inputs
-    const [Name, setName] = useState("");
-    const [Pass, setPass] = useState("");
-    const [Email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [pass, setPass] = useState("");
+    const [email, setEmail] = useState("");
 
     //alredy existing
     const [ExistName, setExistName] = useState(null);
     const [ExistEmail, setExistEmail] = useState(null);
 
 
+    const apiBaseUrl = 'http://192.168.56.1:5000';
+
+
+
 
  
-  const handleSignup =async()=>{
+  const handleSignup =async(e)=>{
+    e.preventDefault();
     await new Promise(resolve => setTimeout(resolve, 1000));
     if(validEmail && validName && validPass){
         try{
-            console.log("hey welcome bitch")
+            console.log("inside")
+            await axios.post(`${apiBaseUrl}/signup` , {
+                name , email , pass
+            }).then((response)=>{
+               
+                console.log(response)
+            })
+      
 
         }catch(e) {
             console.log(e)
@@ -40,7 +52,7 @@ export default function SignForm() {
         <form className="signup-form">
             <span>
                 <label htmlFor="Email">What`s your email?</label>
-                <input type="email" id="email" placeholder='Enter your email ' value={Email} onChange={
+                <input type="email" id="email" placeholder='Enter your email ' value={email} onChange={
                     (e) => {
                         setEmail(e.target.value)
                         setValidEmail(
@@ -58,7 +70,7 @@ export default function SignForm() {
 
 
             <label htmlFor="password">Create a password</label>
-            <input type="password" id="password" placeholder='Create a password' value={Pass} onChange={
+            <input type="password" id="password" placeholder='Create a password' value={pass} onChange={
                 (e) => {
                   setPass(e.target.value)
                   setValidPass(
@@ -70,7 +82,7 @@ export default function SignForm() {
                  {!validPass && <h6 style={{color:"green"}}>Should have Upper , lower , special (@ , # , _ ) and digits with 8 char longs</h6>}
 
             <label htmlFor="name">What should we call you?</label>
-            <input type="text" id='profile' placeholder='Enter a profile name' value={Name} onChange={(e)=>{
+            <input type="text" id='profile' placeholder='Enter a profile name' value={name} onChange={(e)=>{
                 setName(e.target.value)
                 setValidName(
                     /^[A-Za-z0-9@_]{1,12}$/.test(e.target.value)
@@ -78,7 +90,7 @@ export default function SignForm() {
             }} />
             {!validName && <h6 style={{color:"green"}}>Should be only 12 char longs</h6>}
 
-            <button id='signup' onClick={()=>{handleSignup()}}>Sign up</button>
+            <button id='signup' onClick={(e)=>{handleSignup(e)}}>Sign up</button>
         </form>
 
     )
