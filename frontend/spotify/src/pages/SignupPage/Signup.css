@@ -5,7 +5,7 @@
     
 }
 .signup{
-   
+
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -44,18 +44,34 @@ input{
 #signup{
 background-color: #1ed760;
 color: #000;
-font-weight:800;
+font-weight:550;
 width: 110px;
 border: none;
 text-align: center;
-padding: 15px 10px 15px 25px;
-border-radius: 500px;
-display: flex;
+height: 40px;
+border-radius: 20px;
+font-size: 15px;
+
 margin:40px 180px  ;
 }
 
 
+#loadingCont{
+ 
+   position: relative;
+   top: -20px;
+   right: 15px;
+   margin-top: 15px;
+   margin-bottom: 30px;
+}
+
   
     
   
-  
+  #error{
+ 
+    position: absolute;
+    top: 30px;
+   
+    
+  }
