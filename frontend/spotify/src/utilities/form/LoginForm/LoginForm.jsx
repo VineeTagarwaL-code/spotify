@@ -1,4 +1,4 @@
-
+import './LoginF.css'
 export default function LoginForm(){
     return (
         <form>
