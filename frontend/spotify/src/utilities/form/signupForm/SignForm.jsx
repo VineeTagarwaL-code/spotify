@@ -34,19 +34,19 @@ export default function SignForm(props) {
         navigate('/');
     }
 
-    function errorToNormal(){
+    function errorToNormal() {
 
-        setTimeout(()=>{
-// eslint-disable-next-line react/prop-types
-props.setErrorExist(false);
-// eslint-disable-next-line react/prop-types
-props.setError("Validation Failed")
-        },4000)
-        
+        setTimeout(() => {
+            // eslint-disable-next-line react/prop-types
+            props.setErrorExist(false);
+            // eslint-disable-next-line react/prop-types
+            props.setError("Validation Failed")
+        }, 4000)
+
     }
 
 
-   function clearDetails(){
+    function clearDetails() {
         setEmail("")
         setName("")
         setPass("")
@@ -58,23 +58,45 @@ props.setError("Validation Failed")
     const handleSignup = async (e) => {
         setIsloading(true)
         e.preventDefault();
-        
+        await new Promise(resolve => setTimeout(resolve, 1000));
         if (validEmail && validName && validPass) {
             try {
                 console.log("inside")
+
                 await axios.post(`${apiBaseUrl}/signup`, {
                     name, email, pass
                 }).then((response) => {
+
+                    console.log(response)
                     if (response.status == 200) {
-                        //setting the localStorageItems
+
                         console.log("loggedin")
-                        localStorage.setItem("email" , email)
-                        localStorage.setItem("name" , name)
-                        
+                        localStorage.setItem("email", email)
+                        localStorage.setItem("sessionId", response.data.sessionId)
+
                         props.setIsLoggedIn(true);
+                    
                         setSignup("Signed Up")
-                      
-                          navigateBack()
+                        setTimeout(() => {
+                            setIsloading(false)
+                        }, 3000);
+                        clearDetails();
+                        navigateBack()
+                    }
+
+                    if (response.status == 202) {
+
+
+                        // eslint-disable-next-line react/prop-types
+                        props.setErrorExist(true)
+                        // eslint-disable-next-line react/prop-types
+                        props.setError(response.data.response)
+                        setTimeout(() => {
+                            setIsloading(false)
+                        }, 3000);
+
+                        clearDetails();
+                        errorToNormal();
                     }
 
                 })
@@ -92,7 +114,7 @@ props.setError("Validation Failed")
             props.setError("Validation Failed")
             clearDetails();
             errorToNormal();
-            
+
 
         }
 
@@ -103,9 +125,9 @@ props.setError("Validation Failed")
 
     return (<>
         <form className="signup-form">
-            <span>
-                <label htmlFor="Email">What`s your email?</label>
-                <input type="email" id="email" placeholder='Enter your email ' value={email} onChange={
+            <div className="inputBox">
+                <label htmlFor="Email" className="inputName" >What`s your email?</label>
+                <input type="email" id="email" className="inputField" placeholder='Enter your email ' value={email} onChange={
                     (e) => {
                         setEmail(e.target.value)
                         setValidEmail(
@@ -115,35 +137,52 @@ props.setError("Validation Failed")
                 } />
                 <label >
                     {/* {!validEmail || ExistEmail && <h6>{ExistEmail}</h6>} */}
-                    {!validEmail ? <h6 style={{ color: "green" }}>Enter A valid Email</h6> : ExistEmail ? <h6>{ExistEmail}</h6> : ""}
+                    {!validEmail ? <h6 className="validationError">Enter A valid Email</h6> : ExistEmail ? <h6>{ExistEmail}</h6> : ""}
                 </label>
-            </span>
+            </div>
 
 
 
+            <div className="inputBox">
+                <label htmlFor="password" className="inputName">Create a password</label>
+                <input type="password" className="inputField" id="password" placeholder='Create a password' value={pass} onChange={
+                    (e) => {
+                        setPass(e.target.value)
+                        setValidPass(
+                            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(e.target.value)
+                        );
 
-            <label htmlFor="password">Create a password</label>
-            <input type="password" id="password" placeholder='Create a password' value={pass} onChange={
-                (e) => {
-                    setPass(e.target.value)
-                    setValidPass(
-                        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(e.target.value)
-                    );
+                    }}
+                />
+                <label >
 
-                }}
-            />
-            {!validPass && <h6 style={{ color: "green" }}>Should have Upper , lower , special (@ , # , _ ) and digits with 8 char longs</h6>}
+                    {!validPass && <h6 className="validationError">Should have Upper , lower , special (@ , # , _ ) and digits with 8 char longs</h6>}
 
-            <label htmlFor="name">What should we call you?</label>
-            <input type="text" id='profile' placeholder='Enter a profile name' value={name} onChange={(e) => {
-                setName(e.target.value)
-                setValidName(
-                    /^[A-Za-z0-9@_]{1,12}$/.test(e.target.value)
-                )
-            }} />
-            {!validName && <h6 style={{ color: "green" }}>Should be only 12 char longs</h6>}
+                </label>
+
+            </div>
+
+
+            <div className="inputBox">
+
+                <label htmlFor="name" className="inputName">What should we call you?</label>
+
+                <input type="text" id='profile' className="inputField"  placeholder='Enter a profile name' value={name} onChange={(e) => {
+                    setName(e.target.value)
+                    setValidName(
+                        /^[A-Za-z0-9@_]{1,12}$/.test(e.target.value)
+                    )
+                }} />
+
+                <label>
+                    {!validName && <h6 className="validationError">Should be only 12 char longs</h6>}
+
+                </label>
+
+            </div>
 
             <button id='signup' onClick={(e) => { handleSignup(e) }}>{signup}</button>
+
         </form>
         {loading ? (
             <div id="loadingCont">
