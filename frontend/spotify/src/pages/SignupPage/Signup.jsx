@@ -1,9 +1,22 @@
 
 import { useNavigate } from 'react-router-dom';
 import './Signup.css'
+import PropTypes from 'prop-types';
 import SignForm from '../../utilities/form/signupForm/SignForm';
+import Error from '../../utilities/errorSeg/error';
+import Success from '../../utilities/SuccessSeg/Success';
+import { useState } from 'react';
+// eslint-disable-next-line react/prop-types
+
+
 export default function SignupPage() {
    
+
+   const [isErrorExist , setErrorExist] = useState(false);
+   const [error , setError ] = useState("");
+
+   const [isSuccessExist , setSuccessExist] = useState(false);
+ 
 
 
     function handleLoginClick() {
@@ -17,10 +30,17 @@ export default function SignupPage() {
     return (
         <>
             <div className="signup">
+                {isErrorExist ? (
+                    <div id='error'>
+                        <Error error = {error}/>
+                        </div>
+                ) : null}
+
+              
                 <div className="header">
                     <img src="./images/Signup.png" alt="" />
                     <h1>Sign up for free to start listening.</h1>
-                      <SignForm/>
+                      <SignForm  setErrorExist={setErrorExist} setError={setError}  />
                     <p>Already have an account? <span style={{ textDecoration: "underline", cursor: "pointer" , color:"green"  }} onClick={() => {
                         handleLoginClick()
                     }}>Log in</span></p>
@@ -36,3 +56,7 @@ export default function SignupPage() {
         </>
     )
 }
+
+SignForm.propTypes = {
+   setIsLoggedIn: PropTypes.func, // Ensure setLoggedIn is a required function prop
+  };
