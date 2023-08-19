@@ -30,7 +30,7 @@ input {
   width: 300px;
   border: none;
   padding: 10px;
-  margin-bottom: 15px;
+
   background-color: #121212;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -87,3 +87,4 @@ input {
   font-size: 400;
   font-weight: 5rem;
 }
+

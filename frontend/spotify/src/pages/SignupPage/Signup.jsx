@@ -9,14 +9,14 @@ import { useState } from 'react';
 // eslint-disable-next-line react/prop-types
 
 
-export default function SignupPage({setIsLoggedIn}) {
+export default function SignupPage() {
    
 
    const [isErrorExist , setErrorExist] = useState(false);
    const [error , setError ] = useState("");
 
    const [isSuccessExist , setSuccessExist] = useState(false);
-   const [success , setSuccess ] = useState("");
+ 
 
 
     function handleLoginClick() {
@@ -36,15 +36,11 @@ export default function SignupPage({setIsLoggedIn}) {
                         </div>
                 ) : null}
 
-                {
-                    isSuccessExist ? (
-                       <p>hello</p>
-                    ):null
-                }
+              
                 <div className="header">
                     <img src="./images/Signup.png" alt="" />
                     <h1>Sign up for free to start listening.</h1>
-                      <SignForm setIsLoggedIn={setIsLoggedIn} setErrorExist={setErrorExist} setError={setError} setSuccessExist={setSuccessExist}  setSuccess={setSuccess} />
+                      <SignForm  setErrorExist={setErrorExist} setError={setError}  />
                     <p>Already have an account? <span style={{ textDecoration: "underline", cursor: "pointer" , color:"green"  }} onClick={() => {
                         handleLoginClick()
                     }}>Log in</span></p>
