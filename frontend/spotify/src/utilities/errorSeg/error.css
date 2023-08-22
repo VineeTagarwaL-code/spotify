@@ -1,15 +1,16 @@
 #errorCont{
     height: 40px;
-    width: 160px;
+    width: 400px;
     border-radius:20px ;
     display: flex;
     justify-content: center;
     align-items: center;
    
-    color: black;
-    background-color: #1ed760;
+
+    
 }
 #errorMsg{
     text-align: center;
-    color: black;
+    font-weight: 600;
+    color: red;
 }
