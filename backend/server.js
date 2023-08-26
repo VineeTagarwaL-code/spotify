@@ -13,10 +13,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 var transporter = mailer.createTransport({
-    service:"gmail",
-    auth:{
-    user:'spotifyclone.project@gmail.com',
-    pass:"zgfxugegizlvftqc"
+    service: "gmail",
+    auth: {
+        user: 'spotifyclone.project@gmail.com',
+        pass: "zgfxugegizlvftqc"
     }
 })
 
@@ -41,89 +41,114 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-    } 
+    }
     ,
     password: {
         type: String,
     },
-     sessionId:{
-        type:String,
-     }
+    sessionId: {
+        type: String,
+    }
 
 })
 
 const User = new mongoose.model("User", userSchema, "users")
 
 
-app.post("/signup" , async(req , res)=>{
-   
-    const {name , email , pass} = req.body;
+app.post("/signup", async (req, res) => {
 
-    const checkEmail = await User.findOne({email})
+    const { name, email, pass } = req.body;
+
+    const checkEmail = await User.findOne({ email })
     const plainPass = pass;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPass = bcrypt.hashSync(plainPass, salt);
-    if(checkEmail){
-        return res.status(202).json({ response:"Email Already Exists"})
+    if (checkEmail) {
+        return res.status(202).json({ response: "Email Already Exists" })
     }
 
-    try{
+    try {
         const session = uuidv4();
         const user = new User({
-            name ,
-            email ,
-            password : hashedPass,
+            name,
+            email,
+            password: hashedPass,
             sessionId: session
         });
         const newUser = user;
 
         await newUser.save();
 
-        var mailopt = {
-            from:"spotifyclone.project@gmail.com",
-            to:email,
-            subject:"Welcome To Spotify Clone",
-            text:"Thank you for making an account on our clone !"
+        let mailopt = {
+            from: "spotifyclone.project@gmail.com",
+            to: email,
+            subject: "Welcome To Spotify Clone",
+            text: "Thank you for making an account on our clone !"
         };
-        
-      await  transporter.sendMail(mailopt , function(error , info){
-            if(error) console.log(error)
-        
-            else console.log("Email sent " +info.response);
+
+        await transporter.sendMail(mailopt, function (error, info) {
+            if (error) console.log(error)
+
+            else console.log("Email sent " + info.response);
         })
 
 
-        
-        return res.status(200).json({response:"Signed Up Successfully !"  , sessionId: session , user : newUser })
-    }catch(e){
+
+        return res.status(200).json({ response: "Signed Up Successfully !", sessionId: session, user: newUser })
+    } catch (e) {
         console.log(e)
-        return res.status(500).json({response:"Internal Server Error"})
+        return res.status(500).json({ response: "Internal Server Error" })
     }
 
 });
 
 
-app.post("/login" , async(req , res)=>{
-   
-    const { email , pass} = req.body;
-    console.log(  email , pass ," insidelogin")
+app.post("/login", async (req, res) => {
 
-   
-    try{
+    const { email, pass } = req.body;
 
-    const check = await User.findOne({ email : email , password: pass });
-    if(check ){
-        console.log(check)
-      const session = uuidv4();
-      return res.status(200).json({response:"Logged in successfully" , sessionId  : session })
-    }else{
 
-        return res.status(202).json({response:"Invalid Credentials"})
-    }
 
-    }catch(e){
-        console.log(e)
-        return res.status(500).json({response:"Internal Server Error"})
+    try {
+    
+        const userEmail = await User.findOne({ email: email });
+
+        if (userEmail) {
+            const match = await bcrypt.compare(pass, userEmail.password);
+
+            if (match) {
+          
+
+
+                const session = uuidv4();
+                return res.status(200).json({ response: "Logged in successfully", sessionId: session })
+
+            } else {
+                let mailopt = {
+                    from: "spotifyclone.project@gmail.com",
+                    to: email,
+                    subject: "Welcome To Spotify Clone",
+                    text: "Someone tried to log in your  account at " + new date() + " was it you ? if not secure <link>"
+                };
+
+                await transporter.sendMail(mailopt, function (error, info) {
+                    if (error) console.log(error)
+        
+                    else console.log("Email sent " + info.response);
+                })
+
+
+
+                return res.status(202).json({ response: "Invalid Credentials" })
+            }
+        } else {
+            return res.status(202).json({ response: "Invalid Credentials" });
+
+        }
+
+    } catch (e) {
+  
+        return res.status(500).json({ response: "Internal Server Error" })
     }
 
 });

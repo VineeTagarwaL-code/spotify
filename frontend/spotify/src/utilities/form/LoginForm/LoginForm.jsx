@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
+
 import axios from 'axios'
 
 
@@ -118,7 +119,7 @@ export default function LoginForm(props) {
 
                 <div className="inputBox">
                     <label htmlFor="username" className="inputName white" >Email or username</label>
-                    <input  className="inputField"  type="email" id="email" placeholder='Email or username' value={email} onChange={(e)=>{
+                    <input  className="inputField white"  type="email" id="email" placeholder='Email or username' value={email} onChange={(e)=>{
                         setEmail(e.target.value)
                     }}/>
 
@@ -127,7 +128,7 @@ export default function LoginForm(props) {
 
                 <div className="inputBox">
                     <label htmlFor="password" className="inputName white">Password</label>
-                    <input className="inputField" type="password" id=" password" placeholder='Password' value={pass} onChange={(e)=>{
+                    <input className="inputField  white" type="password" id=" password" placeholder='Password' value={pass} onChange={(e)=>{
                         setPass(e.target.value)
                     }} />
 
