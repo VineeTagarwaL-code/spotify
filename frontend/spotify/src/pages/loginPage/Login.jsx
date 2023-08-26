@@ -10,6 +10,7 @@ import LoginForm from '../../utilities/form/LoginForm/LoginForm'
 
 export default function LoginPage() {
 
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
@@ -49,6 +50,7 @@ export default function LoginPage() {
               {isErrorExist ? (
                 <div id='error' className='loginError'>
                   <Error error={error} />
+
                 </div>
               ) : null}
               <h6 id='forgot' >Forgot Your Password ?</h6>
@@ -62,33 +64,7 @@ export default function LoginPage() {
 
 
 
-      {/* {*
-      <div className='main'>
-        <div className="content">
-          {
-            // eslint-disable-next-line react/prop-types
-            isLoggedIn ?
-              <h1>Already Logged In</h1> : <h1>Log in to Spotify</h1>
-          }
 
-          {
-            // eslint-disable-next-line react/prop-types
-            isLoggedIn ?
-              (
-                null
-
-              ) : (
-                <div className="form">
-                  
-                </div>
-              )
-          }
-
-
-
-
-        </div>
-      </div> */}
     </>
   )
 }

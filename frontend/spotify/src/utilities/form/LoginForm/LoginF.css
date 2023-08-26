@@ -1,0 +1,68 @@
+form{
+    background-color: red;
+}
+
+input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #ff0000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .toggle-input {
+    display: none;
+  }
+  
+  .toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .toggle-slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    left: 2px;
+    top: 2px;
+    transition: 0.4s;
+  }
+  
+  .toggle-input:checked + .toggle-slider {
+    background-color: #66bb6a;
+  }
+  
+  .toggle-input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+  }
+  
+  #button {
+    width: 300px;
+    border: none;
+    padding: 10px;
+    background-color: #1ed760;
+    border-radius: 500px;
+    font-size: 400;
+    font-weight: 5rem;
+  }

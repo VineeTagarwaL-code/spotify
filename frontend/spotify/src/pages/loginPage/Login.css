@@ -1,52 +1,7 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  color: #ffff;
-}
-nav {
-  background-color: #000;
-  height: 100px;
-}
-img {
-  height: 36px;
-  padding: 32px 60px;
-}
-.main {
-  height: 100vh;
-  width: 680px;
-  margin: 0 auto;
-  background-color: #000;
-  border-radius: 4px;
-}
-.content {
-  margin-top: 32px;
-  text-align: center;
-  padding: 80px;
-}
-input {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 300px;
-  border: none;
-  padding: 10px;
-
-  background-color: #121212;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
 
-#button {
-  width: 300px;
-  border: none;
-  padding: 10px;
-  background-color: #1ed760;
-  border-radius: 500px;
-  font-size: 400;
-  font-weight: 5rem;
-}
- */
+
+
 
 
 #loginNav {
