@@ -88,3 +88,61 @@ input {
   font-weight: 5rem;
 }
  */
+
+
+#loginNav {
+  background-color: black;
+  padding-inline: 40px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.loginSpotify {
+  height: 45px !important;
+}
+
+#LoginCont {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  background: rgb(26, 26, 26);
+  background: linear-gradient(180deg, rgba(26, 26, 26, 1) 12%, rgba(26, 26, 26, 1) 54%, rgba(0, 0, 0, 1) 100%);
+}
+
+.formLoginCont{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+#LogInmsg{
+    color: white;
+  font-size: 50px;
+  letter-spacing: -0.04em;
+  font-weight: bold;
+}
+
+#mainLoginCont{
+  background-color: black;
+  width: 700px;
+  height: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginActBtn{
+  background-color: transparent;
+  border: 1px solid rgb(89, 89, 89);
+  padding-inline: 20px;
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
