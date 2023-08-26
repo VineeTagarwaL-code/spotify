@@ -35,6 +35,122 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+
+#button {
+  width: 300px;
+  border: none;
+  padding: 10px;
+  background-color: #1ed760;
+  border-radius: 500px;
+  font-size: 400;
+  font-weight: 5rem;
+}
+ */
+
+
+#loginNav {
+  background-color: black;
+  padding-inline: 40px;
+  height: 90px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.loginSpotify {
+  height: 45px !important;
+}
+
+#LoginCont {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  background: rgb(26, 26, 26);
+  background: linear-gradient(180deg, rgba(26, 26, 26, 1) 12%, rgba(26, 26, 26, 1) 54%, rgba(0, 0, 0, 1) 100%);
+}
+
+.formLoginCont{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  
+
+}
+
+
+#login-box{
+  height: 100%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+#LogInmsg{
+    color: white;
+  font-size: 38px;
+  letter-spacing: -0.04em;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+#mainLoginCont{
+  
+  border-radius: 8px;
+  background-color: black;
+  width: 700px;
+  height: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#signUpAuth{
+  margin-bottom: 20px;
+}
+
+.LoginActBtn{
+  background-color: transparent;
+  border: 1px solid rgb(89, 89, 89);
+  
+  width: 300px;
+  height: 40px;
+  padding: 10px 5px 10px 5px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.LoginActBtn:hover{
+  border: 1px solid white;
+}
+.line{
+  border-bottom: 1px solid rgb(39, 39, 39);
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+.Login_form{
+
+  width: 60%;
+}
+.com_image{
+  height: 25px;
+  width: 25px;
+}
+.white{
+  letter-spacing: .1em !important;
+  color: white !important;
+}
+
 .toggle {
   position: relative;
   display: inline-block;
@@ -78,71 +194,32 @@ input {
   transform: translateX(20px);
 }
 
-#button {
-  width: 300px;
-  border: none;
-  padding: 10px;
-  background-color: #1ed760;
-  border-radius: 500px;
-  font-size: 400;
-  font-weight: 5rem;
-}
- */
 
-
-#loginNav {
-  background-color: black;
-  padding-inline: 40px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-}
-
-.loginSpotify {
-  height: 45px !important;
-}
-
-#LoginCont {
-  display: flex;
-  flex-direction: column;
-
-  height: 100vh;
-  background: rgb(26, 26, 26);
-  background: linear-gradient(180deg, rgba(26, 26, 26, 1) 12%, rgba(26, 26, 26, 1) 54%, rgba(0, 0, 0, 1) 100%);
-}
-
-.formLoginCont{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
-}
-
-#LogInmsg{
-    color: white;
-  font-size: 50px;
-  letter-spacing: -0.04em;
+#login{
+  margin: 40px 0px 40px 0px;
+  background-color: #1ED760;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  height: 50px;
+  width: 100%;
+  padding-block: 12px;
+  padding-inline: 38px;
+  font-size: 15px;
+  border-radius: 500px;
+  cursor: pointer;
+}
+#login:hover{
+  transform: scale(1.04);
 }
 
-#mainLoginCont{
-  background-color: black;
-  width: 700px;
-  height: fit-content;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#forgot{
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 40px;
 }
 
-.LoginActBtn{
-  background-color: transparent;
-  border: 1px solid rgb(89, 89, 89);
-  padding-inline: 20px;
-  width: 250px;
-  height: 40px;
-  border-radius: 20px;
-  margin-bottom: 10px;
+#forgot:hover{
+  color: green;
 }

@@ -117,8 +117,8 @@ export default function LoginForm(props) {
             <form>
 
                 <div className="inputBox">
-                    <label htmlFor="username">Email or username</label>
-                    <input type="email" id="email" placeholder='Email or username' value={email} onChange={(e)=>{
+                    <label htmlFor="username" className="inputName white" >Email or username</label>
+                    <input  className="inputField"  type="email" id="email" placeholder='Email or username' value={email} onChange={(e)=>{
                         setEmail(e.target.value)
                     }}/>
 
@@ -126,8 +126,8 @@ export default function LoginForm(props) {
 
 
                 <div className="inputBox">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id=" password" placeholder='Password' value={pass} onChange={(e)=>{
+                    <label htmlFor="password" className="inputName white">Password</label>
+                    <input className="inputField" type="password" id=" password" placeholder='Password' value={pass} onChange={(e)=>{
                         setPass(e.target.value)
                     }} />
 
@@ -143,7 +143,7 @@ export default function LoginForm(props) {
 
 
 
-                <button type="submit" id='button' onClick={(e) => { handleLogInClick(e) }}>Log In</button>
+                <button type="submit" id='login' onClick={(e) => { handleLogInClick(e) }}>Log In</button>
             </form>
             {loading ? (
                 <div id="loadingContLogin">
