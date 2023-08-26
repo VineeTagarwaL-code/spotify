@@ -1,0 +1,15 @@
+#successCont{
+    height: 40px;
+    width: 160px;
+    border-radius:20px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    color: black;
+    background-color: #1ed760;
+}
+#successMsg{
+    text-align: center;
+    color: black;
+}
